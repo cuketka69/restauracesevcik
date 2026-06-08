@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Restaurace U Ševce — Zlín | Steaky, burgery a denní menu</title>
+<meta name="description" content="Zrekonstruovaná restaurace U Ševce v centru Zlína. Steaky, hamburgery, pečená žebra a čerstvé denní menu od 139 Kč. Otevřeno 7 dní v týdnu, kapacita 218 míst, soukromé salonky."/>
+<meta name="keywords" content="restaurace Zlín, denní menu Zlín, steaky Zlín, burgery, žebra, U Ševce, Kvítková"/>
+<meta name="author" content="Restaurace U Ševce"/>
+<meta name="robots" content="index, follow"/>
+<meta name="theme-color" content="#0b0a08"/>
+<meta name="geo.region" content="CZ-72"/>
+<meta name="geo.placename" content="Zlín"/>
+<link rel="canonical" href="https://www.restauraceusevce.cz/"/>
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="logo.png"/>
+<link rel="apple-touch-icon" href="logo.png"/>
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="restaurant.restaurant"/>
+<meta property="og:locale" content="cs_CZ"/>
+<meta property="og:site_name" content="Restaurace U Ševce"/>
+<meta property="og:url" content="https://www.restauraceusevce.cz/"/>
+<meta property="og:title" content="Restaurace U Ševce — Zlín | Steaky, burgery a denní menu"/>
+<meta property="og:description" content="Zrekonstruovaná restaurace v centru Zlína. Steaky, hamburgery, žebra a čerstvé denní menu od 139 Kč v prostředí inspirovaném baťovskou érou."/>
+<meta property="og:image" content="https://www.restauraceusevce.cz/hero.png"/>
+<meta property="og:image:alt" content="Restaurace U Ševce — Zlín"/>
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Restaurace U Ševce — Zlín"/>
+<meta name="twitter:description" content="Steaky, hamburgery, žebra a čerstvé denní menu od 139 Kč v centru Zlína."/>
+<meta name="twitter:image" content="https://www.restauraceusevce.cz/hero.png"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,600;0,700;1,300;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0b0a08;
+  --surface:#14120e;
+  --card:#1c1914;
+  --gold:#c9973a;
+  --gold-lt:#e4b96a;
+  --gold-dk:#8b6520;
+  --cream:#f2ead8;
+  --muted:#6e6454;
+  --border:rgba(201,151,58,0.2);
+  --serif:'Cormorant Garant',serif;
+  --sans:'Raleway',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--cream);
+  font-family:var(--sans);
+  font-weight:300;
+  overflow-x:hidden;
+  line-height:1.7;
+  cursor:none;
+}
+@media(hover:none){body{cursor:auto;}.cursor,.cursor-dot{display:none;}}
+
+/* Grain */
+body::after{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.04;pointer-events:none;z-index:10000;
+}
+
+/* Custom cursor */
+.cursor{
+  width:20px;height:20px;
+  border:1px solid var(--gold);
+  border-radius:50%;
+  position:fixed;pointer-events:none;z-index:99999;
+  transition:transform .15s ease,border-color .2s ease;
+  transform:translate(-50%,-50%);
+}
+.cursor-dot{
+  width:4px;height:4px;
+  background:var(--gold);border-radius:50%;
+  position:fixed;pointer-events:none;z-index:99999;
+  transform:translate(-50%,-50%);
+  transition:left .04s,top .04s;
+}
+
+/* Utilities */
+.container{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.section-label{
+  font-family:var(--sans);font-size:.7rem;font-weight:600;
+  letter-spacing:.35em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.75rem;display:block;
+}
+.section-title{
+  font-family:var(--serif);font-size:clamp(2.5rem,5vw,4rem);
+  font-weight:300;line-height:1.1;margin-bottom:1.5rem;
+}
+.section-title em{font-style:italic;color:var(--gold-lt);}
+
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}.d5{transition-delay:.5s;}
+
+/* Diamond */
+.diamonds{display:flex;align-items:center;gap:.5rem;justify-content:center;margin:1.2rem 0;}
+.diamond{display:inline-block;width:6px;height:6px;background:var(--gold);transform:rotate(45deg);}
+.deco-bar{width:40px;height:1px;background:var(--gold);}
+
+/* ── NAVIGATION ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:1.5rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background .4s ease,padding .4s ease;
+}
+nav.scrolled{
+  background:rgba(11,10,8,.96);
+  backdrop-filter:blur(12px);
+  padding:1rem 2rem;
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  text-decoration:none;display:inline-flex;align-items:center;gap:.75rem;
+  font-family:'Cormorant Garant',serif;font-size:1.7rem;font-weight:600;
+  color:var(--cream);letter-spacing:.05em;
+}
+.nav-logo span{color:var(--gold);}
+.nav-logo img{height:64px;width:auto;display:block;}
+.footer-brand .nav-logo img{height:80px;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{
+  color:var(--cream);text-decoration:none;font-size:.72rem;
+  font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  opacity:.75;transition:opacity .3s,color .3s;
+}
+.nav-links a:hover{opacity:1;color:var(--gold);}
+.nav-cta{
+  background:transparent;border:1px solid var(--gold);color:var(--gold);
+  padding:.6rem 1.4rem;font-family:var(--sans);font-size:.7rem;
+  font-weight:600;letter-spacing:.25em;text-transform:uppercase;
+  cursor:none;text-decoration:none;transition:background .3s,color .3s;
+}
+.nav-cta:hover{background:var(--gold);color:var(--bg);}
+.menu-toggle{display:none;flex-direction:column;gap:5px;cursor:none;padding:5px;}
+.menu-toggle span{display:block;width:25px;height:1px;background:var(--cream);transition:all .3s;}
+
+/* ── MOBILE MENU ── */
+.mobile-menu{
+  display:none;position:fixed;inset:0;
+  background:rgba(11,10,8,.98);z-index:999;
+  flex-direction:column;align-items:center;justify-content:center;gap:2rem;
+}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{
+  color:var(--cream);text-decoration:none;font-family:var(--serif);
+  font-size:2.5rem;font-weight:300;transition:color .3s;
+}
+.mobile-menu a:hover{color:var(--gold);}
+.mobile-close{
+  position:absolute;top:1.5rem;right:2rem;
+  background:none;border:none;color:var(--cream);font-size:1.5rem;cursor:none;
+}
+
+/* ── HERO ── */
+.hero{height:100vh;min-height:600px;position:relative;display:flex;align-items:center;overflow:hidden;}
+.hero-bg{
+  position:absolute;inset:0;
+  background:url('hero.png') center/cover no-repeat;
+  transform:scale(1.06);will-change:transform;
+}
+.hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(11,10,8,.88) 0%,rgba(11,10,8,.55) 55%,rgba(11,10,8,.78) 100%);
+}
+.hero-content{position:relative;z-index:2;max-width:780px;padding:0 3rem;}
+.hero-eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;}
+.hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold);}
+.hero-eyebrow span{font-size:.7rem;font-weight:600;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);}
+.hero h1{
+  font-family:var(--serif);font-size:clamp(3.5rem,8vw,7.5rem);
+  font-weight:300;line-height:1;margin-bottom:1.5rem;letter-spacing:-.01em;
+}
+.hero h1 em{font-style:italic;color:var(--gold-lt);}
+.hero-desc{
+  font-size:1rem;font-weight:300;
+  color:rgba(242,234,216,.72);max-width:480px;margin-bottom:2.5rem;line-height:1.85;
+}
+.hero-actions{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;}
+.btn-primary{
+  background:var(--gold);color:var(--bg);
+  padding:.9rem 2.5rem;font-family:var(--sans);font-size:.75rem;
+  font-weight:700;letter-spacing:.25em;text-transform:uppercase;
+  text-decoration:none;border:none;cursor:none;
+  transition:background .3s,transform .2s;display:inline-block;
+}
+.btn-primary:hover{background:var(--gold-lt);transform:translateY(-2px);}
+.btn-outline{
+  color:var(--cream);padding:.9rem 2.5rem;font-family:var(--sans);
+  font-size:.75rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;
+  text-decoration:none;border:1px solid rgba(242,234,216,.35);cursor:none;
+  transition:border-color .3s,color .3s;display:inline-block;
+}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.hero-vert{
+  position:absolute;right:2.5rem;bottom:32%;z-index:2;
+  writing-mode:vertical-rl;font-size:.62rem;font-weight:600;
+  letter-spacing:.3em;text-transform:uppercase;color:rgba(242,234,216,.35);
+  display:flex;align-items:center;gap:1rem;
+}
+.hero-vert::after{content:'';width:1px;height:50px;background:rgba(242,234,216,.15);}
+.scroll-ind{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  z-index:2;display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:.4;
+}
+.scroll-ind span{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;}
+.scroll-line{width:1px;height:40px;background:linear-gradient(180deg,var(--cream),transparent);animation:pulse 2s ease infinite;}
+@keyframes pulse{0%,100%{opacity:.3;}50%{opacity:1;}}
+
+/* ── FEATURES ── */
+.features-strip{
+  background:var(--surface);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:4rem 0;
+}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);}
+.feature-item{
+  display:flex;align-items:flex-start;gap:1.5rem;
+  padding:2rem 3rem;border-right:1px solid var(--border);
+}
+.feature-item:last-child{border-right:none;}
+.feature-icon{
+  width:48px;height:48px;border:1px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;color:var(--gold);
+}
+.feature-icon svg{width:22px;height:22px;}
+.feature-text h3{font-family:var(--serif);font-size:1.4rem;font-weight:500;margin-bottom:.5rem;}
+.feature-text p{font-size:.85rem;color:var(--muted);line-height:1.75;}
+
+/* ── ABOUT ── */
+.about{padding:8rem 0;}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.about-img-wrap{position:relative;}
+.about-img-wrap img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;}
+.about-img-wrap::before{
+  content:'';position:absolute;top:-15px;left:-15px;width:60px;height:60px;
+  border-top:2px solid var(--gold);border-left:2px solid var(--gold);z-index:2;
+}
+.about-img-wrap::after{
+  content:'';position:absolute;bottom:-15px;right:-15px;width:60px;height:60px;
+  border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);z-index:2;
+}
+.about-content blockquote{
+  font-family:var(--serif);font-size:1.55rem;font-style:italic;font-weight:300;
+  color:var(--gold-lt);line-height:1.45;margin-bottom:2rem;
+  padding-left:2rem;border-left:2px solid var(--gold);
+}
+.about-content p{color:rgba(242,234,216,.7);font-size:.95rem;line-height:1.9;margin-bottom:1.5rem;}
+.about-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;
+  margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--border);
+}
+.stat-n{font-family:var(--serif);font-size:3rem;font-weight:300;color:var(--gold);display:block;line-height:1;}
+.stat-l{font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:.4rem;display:block;}
+
+/* ── SPECIALTIES ── */
+.specialties{padding:6rem 0;position:relative;overflow:hidden;}
+.specialties-bg{
+  position:absolute;inset:-30%;
+  background:url('wood.png') center/cover no-repeat;
+  filter:brightness(.3);
+  will-change:transform;
+  z-index:0;
+}
+.specialties>.container{position:relative;z-index:1;}
+.specialties-header{text-align:center;margin-bottom:4rem;}
+.specialty-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;grid-template-rows:auto auto;gap:4px;}
+.specialty-card{position:relative;overflow:hidden;cursor:none;}
+.specialty-card:first-child{grid-row:span 2;}
+.specialty-card img{
+  width:100%;height:100%;min-height:280px;object-fit:cover;display:block;
+  transition:transform .6s ease,filter .4s ease;filter:brightness(.72);
+}
+.specialty-card:first-child img{min-height:564px;}
+.specialty-card:hover img{transform:scale(1.06);filter:brightness(.5);}
+.specialty-info{
+  position:absolute;bottom:0;left:0;right:0;padding:1.5rem;
+  background:linear-gradient(0deg,rgba(11,10,8,.92) 0%,transparent 100%);
+}
+.specialty-name{font-family:var(--serif);font-size:1.8rem;font-weight:300;margin-bottom:.25rem;}
+.specialty-desc{font-size:.78rem;color:rgba(242,234,216,.6);font-weight:300;}
+.specialty-tag{
+  position:absolute;top:1rem;right:1rem;
+  background:var(--gold);color:var(--bg);
+  font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .6rem;
+}
+
+/* ── DAILY MENU ── */
+.daily-menu{padding:8rem 0;}
+.daily-menu-header{text-align:center;margin-bottom:4rem;}
+.menu-soup{
+  text-align:center;padding:1.5rem;border:1px solid var(--border);margin-bottom:3rem;
+  max-width:500px;margin-left:auto;margin-right:auto;margin-bottom:3rem;
+}
+.menu-soup-label{font-size:.65rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;}
+.menu-soup-name{font-family:var(--serif);font-size:1.2rem;font-style:italic;}
+.menu-layout{display:grid;grid-template-columns:1fr 220px 1fr;gap:4rem;align-items:start;}
+.menu-chef-img{
+  width:220px;height:320px;object-fit:cover;object-position:top;
+  filter:grayscale(20%);
+  border:4px solid var(--surface);outline:1px solid var(--gold);outline-offset:6px;
+  display:block;margin:0 auto;
+}
+.menu-col-head{
+  font-family:var(--sans);font-size:.65rem;font-weight:700;
+  letter-spacing:.35em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:2rem;display:flex;align-items:center;gap:.8rem;
+}
+.menu-col-head::after{content:'';flex:1;height:1px;background:var(--border);}
+.menu-item{
+  display:flex;align-items:baseline;gap:1rem;
+  padding:1rem 0;border-bottom:1px solid rgba(110,100,84,.15);
+  transition:border-color .3s;
+}
+.menu-item:hover{border-color:var(--border);}
+.menu-item-body{flex:1;}
+.menu-item-name{font-family:var(--serif);font-size:1.1rem;font-weight:400;}
+.menu-item-sub{display:block;font-size:.75rem;color:var(--muted);font-weight:300;margin-top:.2rem;font-style:italic;}
+.menu-item-price{font-family:var(--serif);font-size:1.1rem;color:var(--gold);font-style:italic;white-space:nowrap;}
+
+/* ── BEER ── */
+.beer-section{
+  padding:5rem 0;text-align:center;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.beer-bg{
+  position:absolute;inset:-30%;
+  background:url('beer.png') center/cover no-repeat;
+  filter:brightness(.18);
+  will-change:transform;
+  z-index:0;
+}
+.beer-section>.container{position:relative;z-index:1;}
+.beer-grid{display:flex;justify-content:center;gap:3.5rem;margin-top:3rem;flex-wrap:wrap;}
+.beer-item{display:flex;flex-direction:column;align-items:center;gap:.75rem;}
+.beer-icon{
+  width:54px;height:54px;border:1px solid var(--gold);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;color:var(--gold);
+}
+.beer-icon svg{width:22px;height:22px;}
+.beer-name{font-family:var(--serif);font-size:1.1rem;font-weight:500;}
+.beer-deg{font-size:.7rem;color:var(--muted);letter-spacing:.08em;}
+
+/* ── DELIVERY ── */
+.delivery-section{padding:6rem 0;}
+.delivery-inner{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.delivery-apps{display:flex;gap:1.2rem;margin-top:2rem;flex-wrap:wrap;}
+.delivery-app{
+  padding:.75rem 1.4rem;border:1px solid var(--border);font-size:.8rem;
+  font-weight:500;letter-spacing:.1em;color:var(--cream);text-decoration:none;
+  transition:border-color .3s,color .3s;
+}
+.delivery-app:hover{border-color:var(--gold);color:var(--gold);}
+.delivery-image{position:relative;overflow:hidden;aspect-ratio:4/3;}
+.delivery-image img{width:100%;height:100%;object-fit:cover;filter:brightness(.65);}
+.delivery-image::before{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(135deg,var(--bg) 0%,transparent 50%);
+}
+
+/* ── RESERVATION ── */
+.reservation{padding:9rem 0;position:relative;overflow:hidden;text-align:center;}
+.res-bg{
+  position:absolute;inset:0;
+  background:url('table.png') center/cover no-repeat;
+  filter:brightness(.22);
+}
+.res-content{position:relative;z-index:2;max-width:600px;margin:0 auto;}
+.res-content .section-title{font-size:clamp(2.5rem,5vw,4.5rem);}
+.res-content p{color:rgba(242,234,216,.65);margin-bottom:3rem;font-size:1rem;}
+.phone-link{
+  display:inline-flex;align-items:center;gap:.8rem;
+  color:var(--gold);font-family:var(--serif);font-size:2rem;font-style:italic;
+  text-decoration:none;transition:color .3s;
+}
+.phone-link:hover{color:var(--gold-lt);}
+.phone-link svg{width:22px;height:22px;}
+
+/* ── HOURS & CONTACT ── */
+.hours-section{padding:6rem 0;background:var(--surface);}
+.hours-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;}
+.hours-table{margin-top:2rem;}
+.hours-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.9rem 0;border-bottom:1px solid rgba(110,100,84,.15);
+}
+.hours-day{font-size:.8rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;}
+.hours-time{font-family:var(--serif);font-size:1rem;color:var(--gold);}
+.hours-note{font-size:.72rem;color:var(--muted);padding:.8rem 0;border-bottom:none;}
+.contact-info{margin-top:2rem;}
+.contact-row{
+  display:flex;align-items:flex-start;gap:1.2rem;
+  padding:1rem 0;border-bottom:1px solid rgba(110,100,84,.15);
+}
+.contact-row:last-child{border-bottom:none;}
+.contact-icon{
+  width:36px;height:36px;border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold);
+}
+.contact-icon svg{width:15px;height:15px;}
+.contact-detail strong{display:block;font-size:.63rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:.3rem;}
+.contact-detail a,.contact-detail span{color:var(--cream);text-decoration:none;font-size:.93rem;transition:color .3s;}
+.contact-detail a:hover{color:var(--gold);}
+
+/* ── MAP ── */
+.map-section{padding:0 0 6rem;background:var(--surface);}
+.map-wrap{
+  position:relative;
+  border:1px solid var(--border);
+  overflow:hidden;
+}
+.map-wrap iframe{
+  display:block;width:100%;height:420px;border:none;
+  filter:grayscale(1) invert(1) brightness(.65) contrast(1.1) sepia(.3) hue-rotate(180deg);
+}
+.map-overlay{
+  position:absolute;bottom:1.5rem;left:1.5rem;
+}
+.btn-maps{
+  display:inline-flex;align-items:center;gap:.7rem;
+  background:var(--gold);color:var(--bg);
+  padding:.85rem 1.8rem;font-family:var(--sans);font-size:.72rem;
+  font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  text-decoration:none;cursor:none;
+  transition:background .3s,transform .2s;
+}
+.btn-maps:hover{background:var(--gold-lt);transform:translateY(-2px);}
+.btn-maps svg{width:16px;height:16px;flex-shrink:0;}
+
+/* ── FOOTER ── */
+footer{background:#060504;padding:4rem 0 2rem;border-top:1px solid var(--border);}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid var(--border);}
+.footer-brand .nav-logo{display:block;margin-bottom:1.5rem;font-size:2rem;}
+.footer-brand p{font-size:.85rem;color:var(--muted);line-height:1.85;max-width:280px;}
+.footer-col h4{font-family:var(--sans);font-size:.63rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;}
+.footer-col h4+h4{margin-top:2rem;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:.7rem;}
+.footer-col ul a{color:var(--muted);text-decoration:none;font-size:.85rem;transition:color .3s;}
+.footer-col ul a:hover{color:var(--gold);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;}
+.footer-bottom p{font-size:.72rem;color:var(--muted);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .nav-links,.nav-cta{display:none;}
+  .menu-toggle{display:flex;}
+  .features-grid{grid-template-columns:1fr;}
+  .feature-item{border-right:none;border-bottom:1px solid var(--border);}
+  .feature-item:last-child{border-bottom:none;}
+  .about-inner{grid-template-columns:1fr;gap:3rem;}
+  .specialty-grid{grid-template-columns:1fr 1fr;}
+  .specialty-card:first-child{grid-row:auto;}
+  .specialty-card:first-child img{min-height:280px;}
+  .menu-layout{grid-template-columns:1fr;}
+  .menu-chef-img{display:none;}
+  .delivery-inner{grid-template-columns:1fr;}
+  .delivery-image{display:none;}
+  .hours-grid{grid-template-columns:1fr;gap:3rem;}
+  .footer-grid{grid-template-columns:1fr;gap:2.5rem;}
+  .footer-bottom{flex-direction:column;gap:.8rem;text-align:center;}
+  .hero-vert{display:none;}
+  .about-stats{grid-template-columns:repeat(3,1fr);}
+}
+@media(max-width:600px){
+  .specialty-grid{grid-template-columns:1fr;}
+  .about-stats{grid-template-columns:1fr;gap:1.5rem;}
+  .hero-actions{flex-direction:column;align-items:flex-start;}
+  .beer-grid{gap:2rem;}
+  .hero-content{padding:0 1.5rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">&#10005;</button>
+  <a href="#o-nas" onclick="closeMobile()">O nás</a>
+  <a href="#nabidka" onclick="closeMobile()">Nabídka</a>
+  <a href="#denni-menu" onclick="closeMobile()">Denní menu</a>
+  <a href="#rezervace" onclick="closeMobile()">Rezervace</a>
+  <a href="#kontakt" onclick="closeMobile()">Kontakt</a>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo"><img src="logo.png" alt=""/>U&nbsp;<span>Ševce</span></a>
+  <ul class="nav-links">
+    <li><a href="#o-nas">O nás</a></li>
+    <li><a href="#nabidka">Nabídka</a></li>
+    <li><a href="#denni-menu">Denní menu</a></li>
+    <li><a href="#rezervace">Rezervace</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <a href="#rezervace" class="nav-cta">Rezervovat stůl</a>
+  <div class="menu-toggle" id="menuToggle">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-content container">
+    <div class="hero-eyebrow reveal">
+      <span>Restaurace &bull; Zlín</span>
+    </div>
+    <h1 class="reveal d1">
+      Výjimečná<br/><em>chuť</em><br/>u stolu
+    </h1>
+    <p class="hero-desc reveal d2">
+      Zrekonstruovaná restaurace v srdci Zlína s atmosférou inspirovanou baťovskou érou.
+      Steaky, hamburgery, žebra a čerstvé denní menu připravované s péčí.
+    </p>
+    <div class="hero-actions reveal d3">
+      <a href="#denni-menu" class="btn-primary">Denní menu</a>
+      <a href="#rezervace" class="btn-outline">Rezervovat stůl</a>
+    </div>
+  </div>
+  <div class="hero-vert">Kvítková 4323, Zlín</div>
+  <div class="scroll-ind">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-strip">
+  <div class="container">
+    <div class="features-grid">
+      <div class="feature-item reveal">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </div>
+        <div class="feature-text">
+          <h3>Autentická chuť</h3>
+          <p>Tradiční recepty s moderním zpracováním. Každý talíř je poctivě připravovaný z čerstvých surovin.</p>
+        </div>
+      </div>
+      <div class="feature-item reveal d2">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <div class="feature-text">
+          <h3>Prémiové suroviny</h3>
+          <p>Pečlivý výběr od prověřených dodavatelů. Čerstvé maso, lokální produkty, kvalita na prvním místě.</p>
+        </div>
+      </div>
+      <div class="feature-item reveal d3">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="feature-text">
+          <h3>Denní nabídka</h3>
+          <p>Čerstvé denní menu každý den — 6 jídel od 139 Kč včetně polévky. Podáváme do 15:00.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="o-nas">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-img-wrap reveal">
+        <img src="restaurant.png" alt="Interiér restaurace U Ševce" loading="lazy"/>
+      </div>
+      <div class="about-content">
+        <span class="section-label reveal">O restauraci</span>
+        <h2 class="section-title reveal d1">Příběh<br/><em>U&nbsp;Ševce</em></h2>
+        <blockquote class="reveal d2">
+          „Přijďte si vychutnat příjemné prostředí s kvalitním, chutným jídlem"
+        </blockquote>
+        <p class="reveal d3">
+          Zrekonstruovaná restaurace U Ševce se nachází v centru Zlína na adrese Kvítková 4323.
+          Interiér je laděn do barev starého Baťova Zlína — šedá, červená, bílá a dřevo
+          vytvářejí atmosféru, která vás přenese do zlaté průmyslové éry tohoto města.
+        </p>
+        <p class="reveal d4">
+          Nabízíme steaky, hamburgery, pečená žebra a křídla i čerstvé saláty. Každodenní
+          denní menu, soukromé salonky pro akce a oslavy. S kapacitou 218 míst jsme připraveni
+          přivítat skupiny všech velikostí.
+        </p>
+        <div class="about-stats reveal d5">
+          <div>
+            <span class="stat-n">218</span>
+            <span class="stat-l">Míst k sezení</span>
+          </div>
+          <div>
+            <span class="stat-n">6</span>
+            <span class="stat-l">Jídel denně</span>
+          </div>
+          <div>
+            <span class="stat-n">5</span>
+            <span class="stat-l">Druhů piva</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIALTIES -->
+<section class="specialties" id="nabidka">
+  <div class="specialties-bg" id="specialtiesBg"></div>
+  <div class="container">
+    <div class="specialties-header">
+      <span class="section-label reveal">Naše specialty</span>
+      <h2 class="section-title reveal d1">To nejlepší<br/><em>z naší kuchyně</em></h2>
+      <div class="diamonds reveal d2">
+        <div class="deco-bar"></div>
+        <span class="diamond"></span>
+        <span class="diamond"></span>
+        <span class="diamond"></span>
+        <div class="deco-bar"></div>
+      </div>
+    </div>
+    <div class="specialty-grid">
+      <div class="specialty-card reveal">
+        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=900&q=80&fit=crop" alt="Steaky" loading="lazy"/>
+        <div class="specialty-info">
+          <div class="specialty-name">Steaky</div>
+          <div class="specialty-desc">Prémiové maso grilované na dokonalost</div>
+        </div>
+        <div class="specialty-tag">Signature</div>
+      </div>
+      <div class="specialty-card reveal d1">
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=700&q=80&fit=crop" alt="Hamburgery" loading="lazy"/>
+        <div class="specialty-info">
+          <div class="specialty-name">Hamburgery</div>
+          <div class="specialty-desc">Šťavnaté burgery z čerstvého masa</div>
+        </div>
+      </div>
+      <div class="specialty-card reveal d2">
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=700&q=80&fit=crop" alt="Žebra a křídla" loading="lazy"/>
+        <div class="specialty-info">
+          <div class="specialty-name">Žebra &amp; Křídla</div>
+          <div class="specialty-desc">Pomalu pečená, krásně křupavá</div>
+        </div>
+      </div>
+      <div class="specialty-card reveal d3">
+        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=700&q=80&fit=crop" alt="Saláty" loading="lazy"/>
+        <div class="specialty-info">
+          <div class="specialty-name">Saláty</div>
+          <div class="specialty-desc">Čerstvé a výživné, plné chutí</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAILY MENU -->
+<section class="daily-menu" id="denni-menu">
+  <div class="container">
+    <div class="daily-menu-header">
+      <span class="section-label reveal">Dnes v nabídce</span>
+      <h2 class="section-title reveal d1">Denní <em>menu</em></h2>
+      <div class="diamonds reveal d2">
+        <div class="deco-bar"></div>
+        <span class="diamond"></span><span class="diamond"></span><span class="diamond"></span>
+        <div class="deco-bar"></div>
+      </div>
+      <p class="reveal d3" style="color:var(--muted);font-size:.85rem;">
+        Podáváme do 15:00 &nbsp;·&nbsp; Přijímáme Ticket Restaurant a stravenky
+      </p>
+    </div>
+
+    <div class="menu-soup reveal">
+      <div class="menu-soup-label">Polévka</div>
+      <div class="menu-soup-name">Hovězí vývar se zeleninou a nudlemi</div>
+    </div>
+
+    <div class="menu-layout">
+      <div>
+        <div class="menu-col-head">Hlavní jídla</div>
+        <div class="menu-item reveal">
+          <div class="menu-item-body">
+            <div class="menu-item-name">Marinovaný mix masa</div>
+            <span class="menu-item-sub">s jarní cibulkou, rýže</span>
+          </div>
+          <div class="menu-item-price">139 Kč</div>
+        </div>
+        <div class="menu-item reveal d1">
+          <div class="menu-item-body">
+            <div class="menu-item-name">Smažený sýr</div>
+            <span class="menu-item-sub">vařené brambory, tatarská omáčka</span>
+          </div>
+          <div class="menu-item-price">139 Kč</div>
+        </div>
+        <div class="menu-item reveal d2">
+          <div class="menu-item-body">
+            <div class="menu-item-name">Kuřecí medailonky s cheddarem</div>
+            <span class="menu-item-sub">pečené brambory</span>
+          </div>
+          <div class="menu-item-price">149 Kč</div>
+        </div>
+      </div>
+
+      <div style="text-align:center;" class="reveal d2">
+        <img class="menu-chef-img" src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400&q=80&fit=crop&crop=top" alt="Šéfkuchař" loading="lazy"/>
+      </div>
+
+      <div>
+        <div class="menu-col-head">Pokračování</div>
+        <div class="menu-item reveal">
+          <div class="menu-item-body">
+            <div class="menu-item-name">Grilovaný vepřový steak</div>
+            <span class="menu-item-sub">hořčičná marináda, coleslaw, hranolky</span>
+          </div>
+          <div class="menu-item-price">149 Kč</div>
+        </div>
+        <div class="menu-item reveal d1">
+          <div class="menu-item-body">
+            <div class="menu-item-name">Hovězí guláš s červenou cibulí</div>
+            <span class="menu-item-sub">chlebový knedlík</span>
+          </div>
+          <div class="menu-item-price">149 Kč</div>
+        </div>
+        <div class="menu-item reveal d2">
+          <div class="menu-item-body">
+            <div class="menu-item-name">Smažené řízky</div>
+            <span class="menu-item-sub">letní bramborový salát</span>
+          </div>
+          <div class="menu-item-price">159 Kč</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEER -->
+<section class="beer-section" id="beerSection">
+  <div class="beer-bg" id="beerBg"></div>
+  <div class="container">
+    <span class="section-label reveal">Na čepu</span>
+    <h2 class="section-title reveal d1">Výběr <em>piv</em></h2>
+    <div class="beer-grid">
+      <div class="beer-item reveal">
+        <div class="beer-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h11l2 16H3L5 4z"/><path d="M19 8h2a1 1 0 011 1v6a1 1 0 01-1 1h-2"/><path d="M5 8h11"/></svg>
+        </div>
+        <div class="beer-name">Švec 12°</div>
+        <div class="beer-deg">Domácí speciál</div>
+      </div>
+      <div class="beer-item reveal d1">
+        <div class="beer-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h11l2 16H3L5 4z"/><path d="M19 8h2a1 1 0 011 1v6a1 1 0 01-1 1h-2"/><path d="M5 8h11"/></svg>
+        </div>
+        <div class="beer-name">Radegast 12°</div>
+        <div class="beer-deg">Výčepní pivo</div>
+      </div>
+      <div class="beer-item reveal d2">
+        <div class="beer-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h11l2 16H3L5 4z"/><path d="M19 8h2a1 1 0 011 1v6a1 1 0 01-1 1h-2"/><path d="M5 8h11"/></svg>
+        </div>
+        <div class="beer-name">Kozel 11°</div>
+        <div class="beer-deg">Tmavé pivo</div>
+      </div>
+      <div class="beer-item reveal d3">
+        <div class="beer-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h11l2 16H3L5 4z"/><path d="M19 8h2a1 1 0 011 1v6a1 1 0 01-1 1h-2"/><path d="M5 8h11"/></svg>
+        </div>
+        <div class="beer-name">Zubr 10°</div>
+        <div class="beer-deg">Výčepní pivo</div>
+      </div>
+      <div class="beer-item reveal d4">
+        <div class="beer-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h11l2 16H3L5 4z"/><path d="M19 8h2a1 1 0 011 1v6a1 1 0 01-1 1h-2"/><path d="M5 8h11"/></svg>
+        </div>
+        <div class="beer-name">Zubr 11°</div>
+        <div class="beer-deg">Ležák</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERY -->
+<section class="delivery-section">
+  <div class="container">
+    <div class="delivery-inner">
+      <div>
+        <span class="section-label reveal">Rozvoz jídla</span>
+        <h2 class="section-title reveal d1">Dovezeme<br/><em>k vám domů</em></h2>
+        <p class="reveal d2" style="color:var(--muted);font-size:.92rem;margin-bottom:.5rem;">
+          Objednejte si naše jídla pohodlně z domova přes oblíbené rozvážkové aplikace
+          nebo nás zavolejte přímo.
+        </p>
+        <div class="delivery-apps reveal d3">
+          <span class="delivery-app">Foodora</span>
+          <span class="delivery-app">Padim</span>
+          <span class="delivery-app">Wolt</span>
+        </div>
+        <p class="reveal d4" style="color:var(--muted);font-size:.78rem;margin-top:1.5rem;">
+          Platba kartou od 100 Kč &nbsp;·&nbsp; Telefonické objednávky
+        </p>
+      </div>
+      <div class="delivery-image reveal d2">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80&fit=crop" alt="Jídlo z U Ševce" loading="lazy"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section class="reservation" id="rezervace">
+  <div class="res-bg"></div>
+  <div class="container">
+    <div class="res-content">
+      <span class="section-label reveal">Rezervace</span>
+      <h2 class="section-title reveal d1">Zarezervujte<br/>si <em>stůl</em></h2>
+      <div class="diamonds reveal d2">
+        <div class="deco-bar"></div>
+        <span class="diamond"></span><span class="diamond"></span><span class="diamond"></span>
+        <div class="deco-bar"></div>
+      </div>
+      <p class="reveal d3">
+        Rádi vás uvítáme v prostorách naší restaurace. Pro rezervaci nás kontaktujte
+        telefonicky nebo e-mailem. K dispozici jsou soukromé salonky pro firemní akce a oslavy.
+      </p>
+      <a href="#" class="btn-primary reveal d4" style="display:inline-block;margin-bottom:2.5rem;">Rezervovat online</a>
+      <br/>
+      <a href="tel:792335639" class="phone-link reveal d4">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 12 19.79 19.79 0 011.61 3.48a2 2 0 012-2.18h3a2 2 0 012 1.72c.13 1 .36 1.98.71 2.93a2 2 0 01-.45 2.11L7.91 9.91a16 16 0 006.18 6.18l1.87-1.87a2 2 0 012.11-.45c.95.35 1.93.58 2.93.71A2 2 0 0122 16.92z"/></svg>
+        792 335 639
+      </a>
+      <p class="reveal d5" style="margin-top:1.5rem;font-size:.82rem;color:var(--muted);">
+        nebo napište na <a href="mailto:info@restauraceusevce.cz" style="color:var(--gold);text-decoration:none;">info@restauraceusevce.cz</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & CONTACT -->
+<section class="hours-section" id="kontakt">
+  <div class="container">
+    <div class="hours-grid">
+      <div>
+        <span class="section-label reveal">Otevírací doba</span>
+        <h2 class="section-title reveal d1" style="font-size:clamp(2rem,3vw,2.8rem);">Kdy nás<br/><em>najdete</em></h2>
+        <div class="hours-table reveal d2">
+          <div class="hours-row">
+            <span class="hours-day">Pondělí — Čtvrtek</span>
+            <span class="hours-time">10:00 — 22:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Pátek</span>
+            <span class="hours-time">10:00 — 01:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Sobota</span>
+            <span class="hours-time">11:00 — 01:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Neděle</span>
+            <span class="hours-time">11:00 — 15:00</span>
+          </div>
+          <div class="hours-row hours-note">Kuchyně zavírá 21:30 (v neděli 15:00)</div>
+        </div>
+      </div>
+      <div>
+        <span class="section-label reveal">Kontakt &amp; Adresa</span>
+        <h2 class="section-title reveal d1" style="font-size:clamp(2rem,3vw,2.8rem);">Kde nás<br/><em>najdete</em></h2>
+        <div class="contact-info reveal d2">
+          <div class="contact-row">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="contact-detail">
+              <strong>Adresa</strong>
+              <span>Kvítková 4323, 760 01 Zlín</span>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 12 19.79 19.79 0 011.61 3.48a2 2 0 012-2.18h3a2 2 0 012 1.72c.13 1 .36 1.98.71 2.93a2 2 0 01-.45 2.11L7.91 9.91a16 16 0 006.18 6.18l1.87-1.87a2 2 0 012.11-.45c.95.35 1.93.58 2.93.71A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div class="contact-detail">
+              <strong>Telefon</strong>
+              <a href="tel:792335639">792 335 639</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="contact-detail">
+              <strong>E-mail</strong>
+              <a href="mailto:info@restauraceusevce.cz">info@restauraceusevce.cz</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map-section">
+  <div class="container">
+    <div class="map-wrap reveal">
+      <iframe
+        src="https://maps.google.com/maps?q=Kv%C3%ADtkov%C3%A1+4323%2C+760+01+Zl%C3%ADn&output=embed&z=16"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Mapa — Restaurace U Ševce">
+      </iframe>
+      <div class="map-overlay">
+        <a
+          href="https://www.google.com/maps/dir/?api=1&destination=Kv%C3%ADtkov%C3%A1+4323%2C+760+01+Zl%C3%ADn"
+          target="_blank"
+          rel="noopener"
+          class="btn-maps">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+          </svg>
+          Navigovat v Google Maps
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo"><img src="logo.png" alt=""/>U&nbsp;<span>Ševce</span></a>
+        <p>Zrekonstruovaná restaurace v centru Zlína. Steaky, hamburgery, žebra a čerstvé denní menu v prostředí inspirovaném baťovskou érou.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigace</h4>
+        <ul>
+          <li><a href="#o-nas">O nás</a></li>
+          <li><a href="#nabidka">Nabídka</a></li>
+          <li><a href="#denni-menu">Denní menu</a></li>
+          <li><a href="#rezervace">Rezervace</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Rozvoz</h4>
+        <ul>
+          <li><a href="#">Foodora</a></li>
+          <li><a href="#">Padim</a></li>
+          <li><a href="#">Wolt</a></li>
+        </ul>
+        <h4>Přijímáme</h4>
+        <ul>
+          <li><a href="#">Ticket Restaurant</a></li>
+          <li><a href="#">Stravenky</a></li>
+          <li><a href="#">Platební karty</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Restaurace U Ševce, Zlín. Všechna práva vyhrazena.</p>
+      <p style="font-size:.7rem;color:rgba(110,100,84,.5);">Kvítková 4323, 760 01 Zlín</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const dot = document.getElementById('cursorDot');
+let mx = 0, my = 0, cx = 0, cy = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  dot.style.left = mx + 'px';
+  dot.style.top  = my + 'px';
+});
+
+(function animateCursor() {
+  cx += (mx - cx) * 0.12;
+  cy += (my - cy) * 0.12;
+  cursor.style.left = cx + 'px';
+  cursor.style.top  = cy + 'px';
+  requestAnimationFrame(animateCursor);
+})();
+
+document.querySelectorAll('a,button,.specialty-card,.delivery-app').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.style.transform = 'translate(-50%,-50%) scale(2.2)');
+  el.addEventListener('mouseleave', () => cursor.style.transform = 'translate(-50%,-50%) scale(1)');
+});
+
+// Nav scroll
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, {passive: true});
+
+// Parallax hero
+const heroBg = document.getElementById('heroBg');
+window.addEventListener('scroll', () => {
+  if (window.scrollY < window.innerHeight) {
+    heroBg.style.transform = `scale(1.06) translateY(${window.scrollY * 0.25}px)`;
+  }
+}, {passive: true});
+
+// Parallax specialties
+const specialtiesBg = document.getElementById('specialtiesBg');
+const specialtiesSection = document.getElementById('nabidka');
+window.addEventListener('scroll', () => {
+  const rect = specialtiesSection.getBoundingClientRect();
+  if (rect.bottom > 0 && rect.top < window.innerHeight) {
+    const offset = (rect.top + rect.height / 2 - window.innerHeight / 2) * 0.2;
+    specialtiesBg.style.transform = `translateY(${offset}px)`;
+  }
+}, {passive: true});
+
+// Parallax beer
+const beerBg = document.getElementById('beerBg');
+const beerSection = document.getElementById('beerSection');
+window.addEventListener('scroll', () => {
+  const rect = beerSection.getBoundingClientRect();
+  if (rect.bottom > 0 && rect.top < window.innerHeight) {
+    const offset = (rect.top + rect.height / 2 - window.innerHeight / 2) * 0.2;
+    beerBg.style.transform = `translateY(${offset}px)`;
+  }
+}, {passive: true});
+
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+  });
+}, {threshold: 0.12});
+reveals.forEach(el => io.observe(el));
+
+// Mobile menu
+function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
+document.getElementById('mobileClose').addEventListener('click', closeMobile);
+</script>
+
+<!-- Structured data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Restaurace U Ševce",
+  "image": "https://www.restauraceusevce.cz/hero.png",
+  "url": "https://www.restauraceusevce.cz/",
+  "telephone": "+420792335639",
+  "email": "info@restauraceusevce.cz",
+  "priceRange": "$$",
+  "servesCuisine": ["Česká kuchyně", "Steaky", "Hamburgery"],
+  "currenciesAccepted": "CZK",
+  "paymentAccepted": "Hotovost, Platební karty, Stravenky, Ticket Restaurant",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Kvítková 4323",
+    "addressLocality": "Zlín",
+    "postalCode": "760 01",
+    "addressCountry": "CZ"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.2264,
+    "longitude": 17.6694
+  },
+  "hasMap": "https://www.google.com/maps/dir/?api=1&destination=Kv%C3%ADtkov%C3%A1+4323%2C+760+01+Zl%C3%ADn",
+  "acceptsReservations": true,
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+      "opens": "10:00",
+      "closes": "22:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Friday",
+      "opens": "10:00",
+      "closes": "01:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "11:00",
+      "closes": "01:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "11:00",
+      "closes": "15:00"
+    }
+  ]
+}
+</script>
+</body>
+</html>

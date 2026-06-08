@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Jídelní lístek — Restaurace U Ševce, Zlín</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,600;0,700;1,300;1,600&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0b0a08;
+  --surface:#14120e;
+  --card:#1c1914;
+  --gold:#c9973a;
+  --gold-lt:#e4b96a;
+  --gold-dk:#8b6520;
+  --cream:#f2ead8;
+  --muted:#6e6454;
+  --border:rgba(201,151,58,0.2);
+  --serif:'Cormorant Garant',serif;
+  --sans:'Raleway',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--cream);
+  font-family:var(--sans);
+  font-weight:300;
+  overflow-x:hidden;
+  line-height:1.7;
+  cursor:none;
+}
+@media(hover:none){body{cursor:auto;}.cursor,.cursor-dot{display:none;}}
+
+/* Grain overlay */
+body::after{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.04;pointer-events:none;z-index:10000;
+}
+
+/* Custom cursor */
+.cursor{
+  width:20px;height:20px;border:1px solid var(--gold);border-radius:50%;
+  position:fixed;pointer-events:none;z-index:99999;
+  transition:transform .15s ease,border-color .2s ease;
+  transform:translate(-50%,-50%);
+}
+.cursor-dot{
+  width:4px;height:4px;background:var(--gold);border-radius:50%;
+  position:fixed;pointer-events:none;z-index:99999;
+  transform:translate(-50%,-50%);transition:left .04s,top .04s;
+}
+
+/* Utilities */
+.container{max-width:1100px;margin:0 auto;padding:0 2rem;}
+.section-label{
+  font-family:var(--sans);font-size:.7rem;font-weight:600;
+  letter-spacing:.35em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:.75rem;display:block;
+}
+
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.24s;}.d4{transition-delay:.32s;}
+
+/* ── NAVIGATION ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:1.5rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background .4s ease,padding .4s ease;
+}
+nav.scrolled{
+  background:rgba(11,10,8,.96);
+  backdrop-filter:blur(12px);
+  padding:1rem 2rem;
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-family:var(--serif);font-size:1.7rem;font-weight:600;
+  color:var(--cream);text-decoration:none;letter-spacing:.05em;
+}
+.nav-logo span{color:var(--gold);}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{
+  color:var(--cream);text-decoration:none;font-size:.72rem;
+  font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  opacity:.75;transition:opacity .3s,color .3s;
+}
+.nav-links a:hover{opacity:1;color:var(--gold);}
+.nav-back{
+  background:transparent;border:1px solid var(--gold);color:var(--gold);
+  padding:.6rem 1.4rem;font-family:var(--sans);font-size:.7rem;
+  font-weight:600;letter-spacing:.25em;text-transform:uppercase;
+  cursor:none;text-decoration:none;transition:background .3s,color .3s;
+}
+.nav-back:hover{background:var(--gold);color:var(--bg);}
+.menu-toggle{display:none;flex-direction:column;gap:5px;cursor:none;padding:5px;}
+.menu-toggle span{display:block;width:25px;height:1px;background:var(--cream);transition:all .3s;}
+
+/* Mobile menu */
+.mobile-menu{
+  display:none;position:fixed;inset:0;
+  background:rgba(11,10,8,.98);z-index:999;
+  flex-direction:column;align-items:center;justify-content:center;gap:2rem;
+}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{
+  color:var(--cream);text-decoration:none;font-family:var(--serif);
+  font-size:2.5rem;font-weight:300;transition:color .3s;
+}
+.mobile-menu a:hover{color:var(--gold);}
+.mobile-close{
+  position:absolute;top:1.5rem;right:2rem;
+  background:none;border:none;color:var(--cream);font-size:1.5rem;cursor:none;
+}
+
+/* ── HERO BANNER ── */
+.menu-hero{
+  height:42vh;min-height:320px;position:relative;
+  display:flex;align-items:flex-end;overflow:hidden;
+  padding-bottom:4rem;
+}
+.menu-hero-bg{
+  position:absolute;inset:0;
+  background:url('hero.png') center/cover no-repeat;
+}
+.menu-hero-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(11,10,8,.5) 0%,rgba(11,10,8,.92) 100%);
+}
+.menu-hero-content{position:relative;z-index:2;}
+.menu-hero-eyebrow{
+  display:flex;align-items:center;gap:1rem;margin-bottom:1rem;
+}
+.menu-hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold);}
+.menu-hero-eyebrow span{font-size:.7rem;font-weight:600;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);}
+.menu-hero h1{
+  font-family:var(--serif);font-size:clamp(3rem,7vw,5.5rem);
+  font-weight:300;line-height:1;letter-spacing:-.01em;
+}
+.menu-hero h1 em{font-style:italic;color:var(--gold-lt);}
+
+/* ── CATEGORY NAV ── */
+.cat-nav-wrap{
+  position:sticky;top:72px;z-index:900;
+  background:rgba(11,10,8,.97);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(10px);
+}
+.cat-nav{
+  display:flex;gap:0;overflow-x:auto;scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+.cat-nav::-webkit-scrollbar{display:none;}
+.cat-btn{
+  flex-shrink:0;padding:.9rem 1.6rem;
+  font-family:var(--sans);font-size:.63rem;font-weight:600;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--muted);
+  background:none;border:none;border-bottom:2px solid transparent;
+  cursor:none;transition:color .25s,border-color .25s;white-space:nowrap;
+}
+.cat-btn:hover{color:var(--cream);}
+.cat-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
+
+/* ── MENU BODY ── */
+.menu-body{padding:5rem 0 8rem;}
+
+/* Category section */
+.cat-section{margin-bottom:6rem;}
+.cat-header{
+  display:grid;grid-template-columns:1fr auto;align-items:end;
+  margin-bottom:2.5rem;padding-bottom:1.5rem;
+  border-bottom:1px solid var(--border);
+  gap:1rem;
+}
+.cat-title{
+  font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);
+  font-weight:300;line-height:1;
+}
+.cat-title em{font-style:italic;color:var(--gold-lt);}
+.cat-note{
+  font-size:.7rem;color:var(--muted);font-weight:400;
+  letter-spacing:.05em;text-align:right;line-height:1.6;max-width:220px;
+}
+
+/* Items grid — two columns */
+.items-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;
+}
+.menu-item{
+  display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:baseline;
+  padding:1.1rem 0;
+  border-bottom:1px solid rgba(110,100,84,.12);
+  transition:border-color .3s;
+}
+.menu-item:hover{border-bottom-color:var(--border);}
+.menu-item:nth-child(odd){padding-right:3rem;}
+.menu-item:nth-child(even){padding-left:3rem;border-left:1px solid rgba(110,100,84,.12);}
+.item-info{}
+.item-name{font-family:var(--serif);font-size:1.15rem;font-weight:400;line-height:1.2;}
+.item-desc{display:block;font-size:.75rem;color:var(--muted);font-style:italic;font-weight:300;margin-top:.3rem;line-height:1.5;}
+.item-tags{display:flex;gap:.4rem;margin-top:.5rem;flex-wrap:wrap;}
+.item-tag{
+  font-size:.52rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  padding:.18rem .5rem;border:1px solid;
+}
+.tag-sig{color:var(--gold);border-color:rgba(201,151,58,.4);}
+.tag-veg{color:#7dbd6e;border-color:rgba(125,189,110,.3);}
+.tag-hot{color:#e07050;border-color:rgba(224,112,80,.3);}
+.tag-new{color:#9eb8d4;border-color:rgba(158,184,212,.3);}
+.item-price{
+  font-family:var(--serif);font-size:1.2rem;
+  color:var(--gold);font-style:italic;white-space:nowrap;align-self:start;
+  padding-top:.15rem;
+}
+
+/* Single-column sections (soups, sides, desserts, drinks) */
+.items-grid.single{grid-template-columns:1fr;}
+.items-grid.single .menu-item:nth-child(odd){padding-right:0;}
+.items-grid.single .menu-item:nth-child(even){padding-left:0;border-left:none;}
+
+/* Drinks sub-groups */
+.drink-group{margin-bottom:3rem;}
+.drink-group-label{
+  font-size:.62rem;font-weight:700;letter-spacing:.35em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:.8rem;
+}
+.drink-group-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* Allergens note */
+.allergens-note{
+  margin-top:5rem;padding:2rem;
+  border:1px solid var(--border);
+  font-size:.72rem;color:var(--muted);line-height:1.9;
+}
+.allergens-note strong{color:var(--cream);font-weight:500;}
+
+/* Voucher strip */
+.voucher-strip{
+  background:var(--surface);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:2rem 0;text-align:center;margin-bottom:4rem;
+}
+.voucher-strip p{font-size:.8rem;color:var(--muted);letter-spacing:.06em;}
+.voucher-strip strong{color:var(--cream);}
+
+/* ── FOOTER ── */
+footer{background:#060504;padding:3rem 0 2rem;border-top:1px solid var(--border);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem;}
+.footer-bottom p{font-size:.72rem;color:var(--muted);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .nav-links,.nav-back{display:none;}
+  .menu-toggle{display:flex;}
+  .items-grid{grid-template-columns:1fr;}
+  .items-grid .menu-item:nth-child(odd){padding-right:0;}
+  .items-grid .menu-item:nth-child(even){padding-left:0;border-left:none;}
+  .cat-header{grid-template-columns:1fr;gap:.5rem;}
+  .cat-note{text-align:left;max-width:100%;}
+}
+@media(max-width:600px){
+  .cat-btn{padding:.9rem 1.1rem;letter-spacing:.12em;}
+  .menu-hero h1{font-size:2.8rem;}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">&#10005;</button>
+  <a href="index.html" onclick="closeMobile()">Domů</a>
+  <a href="index.html#o-nas" onclick="closeMobile()">O nás</a>
+  <a href="index.html#denni-menu" onclick="closeMobile()">Denní menu</a>
+  <a href="index.html#rezervace" onclick="closeMobile()">Rezervace</a>
+  <a href="index.html#kontakt" onclick="closeMobile()">Kontakt</a>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">U&nbsp;<span>Ševce</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#o-nas">O nás</a></li>
+    <li><a href="index.html#denni-menu">Denní menu</a></li>
+    <li><a href="index.html#rezervace">Rezervace</a></li>
+    <li><a href="index.html#kontakt">Kontakt</a></li>
+  </ul>
+  <a href="index.html" class="nav-back">← Zpět</a>
+  <div class="menu-toggle" id="menuToggle">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO BANNER -->
+<section class="menu-hero">
+  <div class="menu-hero-bg"></div>
+  <div class="container menu-hero-content">
+    <div class="menu-hero-eyebrow reveal">
+      <span>Restaurace U Ševce &bull; Zlín</span>
+    </div>
+    <h1 class="reveal d1">
+      Jídelní<br/><em>lístek</em>
+    </h1>
+  </div>
+</section>
+
+<!-- VOUCHER STRIP -->
+<div class="voucher-strip">
+  <div class="container">
+    <p>Přijímáme <strong>Ticket Restaurant</strong>, <strong>stravenky</strong> a <strong>platební karty</strong> &nbsp;·&nbsp; Platba kartou od 100 Kč &nbsp;·&nbsp; Denní menu podáváme do 15:00</p>
+  </div>
+</div>
+
+<!-- CATEGORY NAV -->
+<div class="cat-nav-wrap">
+  <div class="container" style="padding:0;">
+    <div class="cat-nav" id="catNav">
+      <button class="cat-btn active" onclick="scrollTo('polevky')">Polévky</button>
+      <button class="cat-btn" onclick="scrollTo('predkrmy')">Předkrmy</button>
+      <button class="cat-btn" onclick="scrollTo('steaky')">Steaky</button>
+      <button class="cat-btn" onclick="scrollTo('hamburgery')">Hamburgery</button>
+      <button class="cat-btn" onclick="scrollTo('zebra')">Žebra &amp; Křídla</button>
+      <button class="cat-btn" onclick="scrollTo('hlavni')">Hlavní jídla</button>
+      <button class="cat-btn" onclick="scrollTo('salaty')">Saláty</button>
+      <button class="cat-btn" onclick="scrollTo('prilohy')">Přílohy</button>
+      <button class="cat-btn" onclick="scrollTo('dezerty')">Dezerty</button>
+      <button class="cat-btn" onclick="scrollTo('napoje')">Nápoje</button>
+    </div>
+  </div>
+</div>
+
+<!-- MENU BODY -->
+<main class="menu-body">
+  <div class="container">
+
+    <!-- POLÉVKY -->
+    <section class="cat-section reveal" id="polevky">
+      <div class="cat-header">
+        <div>
+          <span class="section-label">Začátek</span>
+          <h2 class="cat-title">Polévky</h2>
+        </div>
+        <p class="cat-note">Denně čerstvé &middot; součástí denního menu</p>
+      </div>
+      <div class="items-grid single">
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Hovězí vývar se zeleninou a nudlemi</div>
+            <span class="item-desc">Poctivý domácí vývar, vařená zelenina, vaječné nudle</span>
+          </div>
+          <div class="item-price">45 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Gulášová polévka</div>
+            <span class="item-desc">Hovězí maso, paprika, kmín, chléb</span>
+          </div>
+          <div class="item-price">55 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Česneková polévka se sýrem</div>
+            <span class="item-desc">Silný česnekový základ, tavený sýr, opečené krutony</span>
+            <div class="item-tags"><span class="item-tag tag-veg">Veg</span></div>
+          </div>
+          <div class="item-price">55 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Sezónní polévka dne</div>
+            <span class="item-desc">Ptejte se obsluhy na dnešní nabídku</span>
+          </div>
+          <div class="item-price">55 Kč</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PŘEDKRMY -->
+    <section class="cat-section reveal" id="predkrmy">
+      <div class="cat-header">
+        <div>
+          <span class="section-label">Na zahřátí</span>
+          <h2 class="cat-title">Před<em>krmy</em></h2>
+        </div>
+      </div>
+      <div class="items-grid">
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Bruschetta s rajčaty</div>
+            <span class="item-desc">Opečená ciabatta, čerstvá rajčata, bazalka, česnek, olivový olej</span>
+            <div class="item-tags"><span class="item-tag tag-veg">Veg</span></div>
+          </div>
+          <div class="item-price">89 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Nakládaný hermelín</div>
+            <span class="item-desc">Hermelín s česnekem, papričkou a bylinkami, topinky</span>
+            <div class="item-tags"><span class="item-tag tag-veg">Veg</span></div>
+          </div>
+          <div class="item-price">99 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Krevety na česneku</div>
+            <span class="item-desc">Tygrované krevety, česnek, bílé víno, máslo, bageta</span>
+          </div>
+          <div class="item-price">169 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Carpaccio z hovězí svíčkové</div>
+            <span class="item-desc">Tenké plátky syrové svíčkové, rukola, parmazán, kaparky, citron</span>
+            <div class="item-tags"><span class="item-tag tag-sig">Specialita</span></div>
+          </div>
+          <div class="item-price">189 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Tatarský biftek</div>
+            <span class="item-desc">150 g syrové svíčkové, žloutek, koření, topinky, česnek</span>
+            <div class="item-tags"><span class="item-tag tag-sig">Specialita</span></div>
+          </div>
+          <div class="item-price">199 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Smažené žampiony</div>
+            <span class="item-desc">Celé žampiony v strouhance, tatarská nebo česneková omáčka</span>
+            <div class="item-tags"><span class="item-tag tag-veg">Veg</span></div>
+          </div>
+          <div class="item-price">109 Kč</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEAKY -->
+    <section class="cat-section reveal" id="steaky">
+      <div class="cat-header">
+        <div>
+          <span class="section-label">Grill &amp; Fire</span>
+          <h2 class="cat-title"><em>Steaky</em></h2>
+        </div>
+        <p class="cat-note">Servírováno s přílohou dle výběru &middot; stupeň propečení na přání</p>
+      </div>
+      <div class="items-grid">
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Entrecôte <span style="font-size:.8rem;color:var(--muted);">250 g</span></div>
+            <span class="item-desc">Hovězí rib-eye bez kosti, marinovaný, na grilu</span>
+            <div class="item-tags"><span class="item-tag tag-sig">Signature</span></div>
+          </div>
+          <div class="item-price">389 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Svíčková steakhouse <span style="font-size:.8rem;color:var(--muted);">200 g</span></div>
+            <span class="item-desc">Filety z hovězí svíčkové, bylinková marináda</span>
+            <div class="item-tags"><span class="item-tag tag-sig">Signature</span></div>
+          </div>
+          <div class="item-price">449 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">T-Bone <span style="font-size:.8rem;color:var(--muted);">400 g</span></div>
+            <span class="item-desc">T-bone steak na grilu, fleur de sel, máslo s bylinkami</span>
+          </div>
+          <div class="item-price">549 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Rib-Eye <span style="font-size:.8rem;color:var(--muted);">300 g</span></div>
+            <span class="item-desc">Mramorovaný rib-eye, česneková omáčka, pebre</span>
+          </div>
+          <div class="item-price">489 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Flank Steak <span style="font-size:.8rem;color:var(--muted);">250 g</span></div>
+            <span class="item-desc">Grilovaný flank, chimichurri, opečená šalotka</span>
+          </div>
+          <div class="item-price">369 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Vepřový steak <span style="font-size:.8rem;color:var(--muted);">300 g</span></div>
+            <span class="item-desc">Šťavnatý kotlet na grilu, hořčičná marináda, coleslaw</span>
+          </div>
+          <div class="item-price">279 Kč</div>
+        </div>
+      </div>
+      <p style="margin-top:1.5rem;font-size:.72rem;color:var(--muted);">
+        Stupně propečení: Rare · Medium Rare · Medium · Medium Well · Well Done &nbsp;&middot;&nbsp;
+        K steakům doporučujeme omáčku: <em style="color:var(--cream);">pepřová, houbová, česneková</em> — každá +39 Kč
+      </p>
+    </section>
+
+    <!-- HAMBURGERY -->
+    <section class="cat-section reveal" id="hamburgery">
+      <div class="cat-header">
+        <div>
+          <span class="section-label">Klasika</span>
+          <h2 class="cat-title">Hambu<em>rgery</em></h2>
+        </div>
+        <p class="cat-note">Servírováno s hranolkami a coleslaw</p>
+      </div>
+      <div class="items-grid">
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">U Ševce Burger</div>
+            <span class="item-desc">Hovězí 180 g, slanina, cheddar, ledový salát, rajče, okurka, BBQ</span>
+            <div class="item-tags"><span class="item-tag tag-sig">Signature</span></div>
+          </div>
+          <div class="item-price">259 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Classic Cheeseburger</div>
+            <span class="item-desc">Hovězí 180 g, cheddar, americká hořčice, kečup, cibule, okurka</span>
+          </div>
+          <div class="item-price">239 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">BBQ Smoky Burger</div>
+            <span class="item-desc">Hovězí 180 g, jalapeño, uzená slanina, BBQ omáčka, cheddar</span>
+            <div class="item-tags"><span class="item-tag tag-hot">Pikantní</span></div>
+          </div>
+          <div class="item-price">269 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Mushroom &amp; Swiss</div>
+            <span class="item-desc">Hovězí 180 g, restované houby, ementál, dijonská hořčice, špenát</span>
+          </div>
+          <div class="item-price">259 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Chicken Crispy</div>
+            <span class="item-desc">Smažené kuřecí prso, coleslaw, pickles, medovo-hořčičná omáčka</span>
+          </div>
+          <div class="item-price">239 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Veggie Burger</div>
+            <span class="item-desc">Řepný patty, avokádo, sun-dried rajčata, hummus, rukola</span>
+            <div class="item-tags"><span class="item-tag tag-veg">Veg</span></div>
+          </div>
+          <div class="item-price">229 Kč</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ŽEBRA & KŘÍDLA -->
+    <section class="cat-section reveal" id="zebra">
+      <div class="cat-header">
+        <div>
+          <span class="section-label">Slow &amp; Low</span>
+          <h2 class="cat-title">Žebra &amp; <em>Křídla</em></h2>
+        </div>
+        <p class="cat-note">Marinováno 24 hodin &middot; pomalu pečeno</p>
+      </div>
+      <div class="items-grid">
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Vepřová žebra BBQ <span style="font-size:.8rem;color:var(--muted);">500 g</span></div>
+            <span class="item-desc">Pomalu pečená žebra, domácí BBQ omáčka, hranolky, coleslaw</span>
+            <div class="item-tags"><span class="item-tag tag-sig">Signature</span></div>
+          </div>
+          <div class="item-price">299 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Vepřová žebra BBQ <span style="font-size:.8rem;color:var(--muted);">1 kg</span></div>
+            <span class="item-desc">Velká porce na sdílení, hranolky, coleslaw, dipová omáčka</span>
+          </div>
+          <div class="item-price">549 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Kuřecí křídla <span style="font-size:.8rem;color:var(--muted);">500 g</span></div>
+            <span class="item-desc">10 ks křídel v BBQ nebo pikantní glazuře, tzatziki, zelenina</span>
+          </div>
+          <div class="item-price">249 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Pikantní křídla <span style="font-size:.8rem;color:var(--muted);">500 g</span></div>
+            <span class="item-desc">10 ks křídel v Buffalo omáčce, ranch dip, celer</span>
+            <div class="item-tags"><span class="item-tag tag-hot">Pikantní</span></div>
+          </div>
+          <div class="item-price">259 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Mix Grill</div>
+            <span class="item-desc">Žebra 250 g + kuřecí křídla 5 ks + vepřový steak 150 g, přílohy</span>
+            <div class="item-tags"><span class="item-tag tag-sig">Signature</span></div>
+          </div>
+          <div class="item-price">369 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Žebírka s kukuřicí</div>
+            <span class="item-desc">Vepřová žebírka 400 g, pečená kukuřice, smetanová omáčka</span>
+          </div>
+          <div class="item-price">279 Kč</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HLAVNÍ JÍDLA -->
+    <section class="cat-section reveal" id="hlavni">
+      <div class="cat-header">
+        <div>
+          <span class="section-label">Z kuchyně</span>
+          <h2 class="cat-title">Hlavní <em>jídla</em></h2>
+        </div>
+        <p class="cat-note">Servírováno s přílohou dle výběru</p>
+      </div>
+      <div class="items-grid">
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Svíčková na smetaně</div>
+            <span class="item-desc">Hovězí svíčková, smetanová omáčka, chlebový knedlík, brusinky, šlehačka</span>
+            <div class="item-tags"><span class="item-tag tag-sig">Česká klasika</span></div>
+          </div>
+          <div class="item-price">229 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Kuřecí řízek vídeňský styl</div>
+            <span class="item-desc">Velký kuřecí řízek v trojobalu, vařené brambory s máslem, citron</span>
+          </div>
+          <div class="item-price">199 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Smažený vepřový řízek</div>
+            <span class="item-desc">Klasický vepřový řízek, bramborový salát, tatarská omáčka</span>
+          </div>
+          <div class="item-price">189 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Hovězí guláš s červenou cibulí</div>
+            <span class="item-desc">Poctivý hovězí guláš na červené cibuli, chlebový nebo houskový knedlík</span>
+          </div>
+          <div class="item-price">189 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Grilovaný losos</div>
+            <span class="item-desc">Filet lososa na grilu, máslová omáčka s citronem, špenát, rýže</span>
+          </div>
+          <div class="item-price">299 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Pečená kachní stehna</div>
+            <span class="item-desc">Konfitovaná kachní stehna, červené zelí, bramborový knedlík</span>
+            <div class="item-tags"><span class="item-tag tag-sig">Specialita</span></div>
+          </div>
+          <div class="item-price">259 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Kuřecí medailonky s cheddarem</div>
+            <span class="item-desc">Kuřecí medailonky, roztavený cheddar, pečené brambory</span>
+          </div>
+          <div class="item-price">199 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Smažený sýr</div>
+            <span class="item-desc">Smažený eidam nebo hermelín, tatarská omáčka, vařené brambory</span>
+            <div class="item-tags"><span class="item-tag tag-veg">Veg</span></div>
+          </div>
+          <div class="item-price">169 Kč</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SALÁTY -->
+    <section class="cat-section reveal" id="salaty">
+      <div class="cat-header">
+        <div>
+          <span class="section-label">Čerstvé</span>
+          <h2 class="cat-title">Sa<em>láty</em></h2>
+        </div>
+        <p class="cat-note">Přidejte grilované kuřecí prso +49 Kč &middot; krevetky +79 Kč</p>
+      </div>
+      <div class="items-grid">
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Caesar Salát</div>
+            <span class="item-desc">Římský salát, parmazán, slanina, krutony, Caesar dresink</span>
+          </div>
+          <div class="item-price">189 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Řecký Salát</div>
+            <span class="item-desc">Rajčata, okurka, olivy, feta, červená cibule, oregano, olivový olej</span>
+            <div class="item-tags"><span class="item-tag tag-veg">Veg</span></div>
+          </div>
+          <div class="item-price">169 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Kaprese</div>
+            <span class="item-desc">Čerstvá mozzarella, rajčata, bazalka, balzamikový krém, olivový olej</span>
+            <div class="item-tags"><span class="item-tag tag-veg">Veg</span></div>
+          </div>
+          <div class="item-price">159 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Salade Niçoise</div>
+            <span class="item-desc">Tuňák, vejce, zelené fazolky, olivy, rajčata, vinaigrette</span>
+          </div>
+          <div class="item-price">199 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Šéfkuchařský salát</div>
+            <span class="item-desc">Mix listů, kuřecí prso, kukuřice, paprika, cherry rajčata, dresink dle výběru</span>
+          </div>
+          <div class="item-price">179 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Grilovaná zelenina</div>
+            <span class="item-desc">Sezónní zelenina na grilu, pesto, balkánský sýr, rukola</span>
+            <div class="item-tags"><span class="item-tag tag-veg">Veg</span></div>
+          </div>
+          <div class="item-price">169 Kč</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PŘÍLOHY -->
+    <section class="cat-section reveal" id="prilohy">
+      <div class="cat-header">
+        <div>
+          <span class="section-label">Doplňky</span>
+          <h2 class="cat-title">Přílo<em>hy</em></h2>
+        </div>
+      </div>
+      <div class="items-grid single">
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Hranolky</div>
+            <span class="item-desc">Klasické tenké hranolky nebo tlustší belgické</span>
+          </div>
+          <div class="item-price">49 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Sladké bramborové hranolky</div>
+            <span class="item-desc">Sladké batáty, sůl, rozmarýn</span>
+          </div>
+          <div class="item-price">59 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Pečené brambory s bylinkami</div>
+            <span class="item-desc">Wedges, rozmarýn, česnek, olivový olej</span>
+          </div>
+          <div class="item-price">49 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Rýže</div>
+            <span class="item-desc">Vařená bílá rýže, máslo</span>
+          </div>
+          <div class="item-price">39 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Chlebový knedlík</div>
+          </div>
+          <div class="item-price">35 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Coleslaw</div>
+            <span class="item-desc">Zelný salát s mrkví a majonézovým dresinkem</span>
+          </div>
+          <div class="item-price">39 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Grilovaná zelenina</div>
+            <span class="item-desc">Sezónní zelenina, olivový olej, mořská sůl</span>
+          </div>
+          <div class="item-price">49 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Domácí chleba</div>
+            <span class="item-desc">Plátky čerstvého chleba s máslem</span>
+          </div>
+          <div class="item-price">29 Kč</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEZERTY -->
+    <section class="cat-section reveal" id="dezerty">
+      <div class="cat-header">
+        <div>
+          <span class="section-label">Na závěr</span>
+          <h2 class="cat-title">Dez<em>erty</em></h2>
+        </div>
+      </div>
+      <div class="items-grid">
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Tiramisu</div>
+            <span class="item-desc">Klasické italské tiramisu, mascarpone, espresso, kakao</span>
+            <div class="item-tags"><span class="item-tag tag-sig">Domácí výroba</span></div>
+          </div>
+          <div class="item-price">109 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Cheesecake</div>
+            <span class="item-desc">Pečený cheesecake s lesním ovocem nebo sezónním ovocem</span>
+          </div>
+          <div class="item-price">119 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Čokoládový fondant</div>
+            <span class="item-desc">Teplý čokoládový koláček s tekutým středem, vanilková zmrzlina</span>
+          </div>
+          <div class="item-price">129 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Crème brûlée</div>
+            <span class="item-desc">Vanilkový krém, karamelová krusta, čerstvé ovoce</span>
+          </div>
+          <div class="item-price">119 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Zmrzlinový pohár</div>
+            <span class="item-desc">3 kopečky zmrzliny, šlehačka, čokoládová nebo oříšková omáčka</span>
+          </div>
+          <div class="item-price">99 Kč</div>
+        </div>
+        <div class="menu-item">
+          <div class="item-info">
+            <div class="item-name">Palačinky</div>
+            <span class="item-desc">Tři palačinky, džem nebo Nutella, šlehačka</span>
+            <div class="item-tags"><span class="item-tag tag-veg">Veg</span></div>
+          </div>
+          <div class="item-price">89 Kč</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NÁPOJE -->
+    <section class="cat-section reveal" id="napoje">
+      <div class="cat-header">
+        <div>
+          <span class="section-label">Nápojový lístek</span>
+          <h2 class="cat-title">Ná<em>poje</em></h2>
+        </div>
+      </div>
+
+      <div class="drink-group">
+        <div class="drink-group-label">Piva na čepu</div>
+        <div class="items-grid">
+          <div class="menu-item">
+            <div class="item-info">
+              <div class="item-name">Švec 12°</div>
+              <span class="item-desc">Domácí speciální pivo &middot; 0,5 l</span>
+              <div class="item-tags"><span class="item-tag tag-sig">Signature</span></div>
+            </div>
+            <div class="item-price">59 Kč</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <div class="item-name">Radegast 12°</div>
+              <span class="item-desc">Světlý ležák &middot; 0,5 l / 0,3 l</span>
+            </div>
+            <div class="item-price">55 / 39 Kč</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <div class="item-name">Kozel 11°</div>
+              <span class="item-desc">Tmavé pivo &middot; 0,5 l / 0,3 l</span>
+            </div>
+            <div class="item-price">52 / 36 Kč</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <div class="item-name">Zubr 10°</div>
+              <span class="item-desc">Výčepní pivo &middot; 0,5 l / 0,3 l</span>
+            </div>
+            <div class="item-price">49 / 34 Kč</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <div class="item-name">Zubr 11°</div>
+              <span class="item-desc">Ležák &middot; 0,5 l / 0,3 l</span>
+            </div>
+            <div class="item-price">54 / 38 Kč</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <div class="item-name">Nealkoholické pivo</div>
+              <span class="item-desc">0,5 l</span>
+            </div>
+            <div class="item-price">52 Kč</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drink-group">
+        <div class="drink-group-label">Víno</div>
+        <div class="items-grid">
+          <div class="menu-item">
+            <div class="item-info">
+              <div class="item-name">Víno bílé</div>
+              <span class="item-desc">Moravské &middot; 0,2 l / 0,75 l</span>
+            </div>
+            <div class="item-price">65 / 229 Kč</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <div class="item-name">Víno červené</div>
+              <span class="item-desc">Moravské &middot; 0,2 l / 0,75 l</span>
+            </div>
+            <div class="item-price">65 / 229 Kč</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <div class="item-name">Prosecco</div>
+              <span class="item-desc">Italské sekt &middot; 0,15 l</span>
+            </div>
+            <div class="item-price">95 Kč</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <div class="item-name">Rosé víno</div>
+              <span class="item-desc">0,2 l / 0,75 l</span>
+            </div>
+            <div class="item-price">65 / 229 Kč</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drink-group">
+        <div class="drink-group-label">Káva &amp; Čaj</div>
+        <div class="items-grid">
+          <div class="menu-item">
+            <div class="item-info">
+              <div class="item-name">Espresso</div>
+            </div>
+            <div class="item-price">55 Kč</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <div class="item-name">Cappuccino</div>
+            </div>
+            <div class="item-price">65 Kč</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <div class="item-name">Flat White</div>
+            </div>
+            <div class="item-price">69 Kč</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <div class="item-name">Americano</div>
+            </div>
+            <div class="item-price">59 Kč</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <div class="item-name">Čaj (výběr druhů)</div>
+            </div>
+            <div class="item-price">49 Kč</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <div class="item-name">Irská káva</div>
+              <span class="item-desc">Whiskey, espresso, šlehačka</span>
+            </div>
+            <div class="item-price">119 Kč</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drink-group">
+        <div class="drink-group-label">Nealkoholické nápoje</div>
+        <div class="items-grid">
+          <div class="menu-item">
+            <div class="item-info">
+              <div class="item-name">Kofola</div>
+              <span class="item-desc">0,5 l / 0,3 l &middot; točená</span>
+            </div>
+            <div class="item-price">45 / 32 Kč</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <div class="item-name">Coca-Cola / Sprite / Fanta</div>
+              <span class="item-desc">0,33 l</span>
+            </div>
+            <div class="item-price">55 Kč</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <div class="item-name">Minerální voda</div>
+              <span class="item-desc">Jemně nebo silně perlivá &middot; 0,33 l / 0,75 l</span>
+            </div>
+            <div class="item-price">39 / 69 Kč</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <div class="item-name">Džus 100%</div>
+              <span class="item-desc">Pomerančový, jablkový, multivitamín &middot; 0,3 l</span>
+            </div>
+            <div class="item-price">55 Kč</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <div class="item-name">Domácí limonáda</div>
+              <span class="item-desc">Citron &amp; máta nebo lesní plody &middot; 0,4 l</span>
+            </div>
+            <div class="item-price">79 Kč</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <div class="item-name">Red Bull</div>
+              <span class="item-desc">0,25 l</span>
+            </div>
+            <div class="item-price">69 Kč</div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ALLERGENS NOTE -->
+    <div class="allergens-note reveal">
+      <strong>Alergeny</strong><br/>
+      Informace o obsahu alergenů jsou k dispozici u obsluhy. Pokud trpíte alergií nebo intolerancí, informujte nás prosím před objednávkou.<br/><br/>
+      <strong>Upozornění:</strong> Ceny jsou uvedeny v Kč včetně DPH. Vyhrazujeme si právo na změnu jídelního lístku. Části tohoto lístku mohou být sezónně nahrazeny.
+      Denní menu je podáváno pouze do <strong>15:00</strong> každý den.
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-bottom">
+      <p>© 2026 Restaurace U Ševce, Zlín &nbsp;·&nbsp; <a href="index.html" style="color:var(--gold);text-decoration:none;">Zpět na hlavní stránku</a></p>
+      <p style="font-size:.7rem;color:rgba(110,100,84,.5);">Kvítková 4323, 760 01 Zlín &nbsp;·&nbsp; 792 335 639</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const dot = document.getElementById('cursorDot');
+let mx = 0, my = 0, cx = 0, cy = 0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  dot.style.left = mx + 'px';
+  dot.style.top  = my + 'px';
+});
+(function animateCursor() {
+  cx += (mx - cx) * 0.12;
+  cy += (my - cy) * 0.12;
+  cursor.style.left = cx + 'px';
+  cursor.style.top  = cy + 'px';
+  requestAnimationFrame(animateCursor);
+})();
+document.querySelectorAll('a,button').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.style.transform = 'translate(-50%,-50%) scale(2.2)');
+  el.addEventListener('mouseleave', () => cursor.style.transform = 'translate(-50%,-50%) scale(1)');
+});
+
+// Nav scroll
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, {passive: true});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+  });
+}, {threshold: 0.08});
+reveals.forEach(el => io.observe(el));
+
+// Category nav scroll
+function scrollTo(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const offset = 140;
+  const top = el.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({top, behavior: 'smooth'});
+}
+
+// Active cat-btn on scroll
+const sections = ['polevky','predkrmy','steaky','hamburgery','zebra','hlavni','salaty','prilohy','dezerty','napoje'];
+const btns = document.querySelectorAll('.cat-btn');
+
+const sio = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const idx = sections.indexOf(e.target.id);
+      if (idx !== -1) {
+        btns.forEach(b => b.classList.remove('active'));
+        btns[idx].classList.add('active');
+        btns[idx].scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+      }
+    }
+  });
+}, {threshold: 0.3, rootMargin: '-100px 0px -50% 0px'});
+
+sections.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) sio.observe(el);
+});
+
+// Mobile menu
+function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+document.getElementById('menuToggle').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
+document.getElementById('mobileClose').addEventListener('click', closeMobile);
+</script>
+</body>
+</html>
